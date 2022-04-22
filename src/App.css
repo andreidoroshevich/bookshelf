@@ -1,0 +1,71 @@
+.App {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+table {
+    border: none;
+    background: white;
+    width: 1000px;
+    border-collapse: collapse;
+    margin: 10px;
+}
+
+td {
+    border-bottom: 2px solid lightgrey;
+}
+
+.photo {
+    width: 200px;
+}
+
+.description {
+    width: 600px;
+}
+
+.buttons {
+    width: 200px;
+}
+
+button {
+    width: 150px;
+    height: 30px;
+    margin: 10px;
+}
+
+button.addButton {
+    margin-left: 50px;
+}
+
+img {
+    width: 120px;
+}
+
+.book_title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.book_author, .book_year {
+    font-size: 18px;
+}
+
+.addBookHeader {
+    font-size: 28px;
+}
+
+hr {
+    margin-bottom: 30px;
+    background-color: lightgrey;
+    border: 2px solid lightgrey;
+}
+
+
