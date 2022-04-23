@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {BooksType} from "../App";
-import Button from "./Button";
 import './Modal/Modal.css';
-import Modal from "./Modal/Modal";
 import Book from "./Book";
 
 type TableOfBooksType = {

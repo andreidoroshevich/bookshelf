@@ -30,16 +30,14 @@ const Book = (props: BookType) => {
     let [image, setImage] = useState('')
     let [year, setYear] = useState('')
 
-
     return (
         <>
             <tr>
                 <td className={'photo'}>
-                    <img src={props.book.image}/>
+                    <img alt={'bookImage'} src={props.book.image}/>
                 </td>
                 <td className={'description'}>
                     <div className={'book_title'}>{props.book.title}</div>
-                    <div className={'book_title'}>{props.book.id}</div>
                     <div className={'book_author'}>{props.book.author}</div>
                     <div className={'book_year'}>{props.book.year}</div>
                 </td>

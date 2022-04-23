@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import './App.css';
 import {v1} from "uuid";
 import TableOfBooks from "./components/TableOfBooks";
 import Header from "./components/Header";
 import Button from "./components/Button";
 import Modal from "./components/Modal/Modal";
+import {addNewBookAC, BookShelfReducer, getStateAC, removeBookAC} from "./Reducer/BookShelfReducer";
 
 export type BooksType = {
     id: string
@@ -16,7 +17,7 @@ export type BooksType = {
 
 function App() {
 
-    const [books, setBooks] = useState<Array<BooksType>>([
+    const [books, booksDispatch] = useReducer(BookShelfReducer, [
         {
             id: v1(),
             title: "Изучаем программирование на JavaScript",
@@ -43,23 +44,21 @@ function App() {
         }
     ])
     const [modalActive, setModalActive] = useState(false)
-    let [title, setTitle] = useState('')
-    let [author, setAuthor] = useState('')
-    let [image, setImage] = useState('')
-    let [year, setYear] = useState('')
+    const [title, setTitle] = useState('')
+    const [author, setAuthor] = useState('')
+    const [image, setImage] = useState('')
+    const [year, setYear] = useState('')
 
+    useEffect(() => {
+        booksDispatch(getStateAC());
+    }, []);
+    useEffect(() => {
+        localStorage.setItem('books', JSON.stringify(books));
+    }, [books]);
 
     //функция добавления книги
-
     const addBook = (title: string, author: string, year: string, image: string) => {
-        const NewBook: BooksType = {
-            id: v1(),
-            title: title,
-            author: author,
-            year: year,
-            image: image
-        }
-        setBooks([NewBook, ...books])
+        booksDispatch(addNewBookAC(title, author, year, image))
         setModalActive(false)
         setTitle('')
         setAuthor('')
@@ -67,16 +66,14 @@ function App() {
         setImage('')
     }
 
-
     //функция удаления
     const removeBook = (id: string) => {
-        let FilteredBooks = books.filter(t => t.id !== id)
-        setBooks(FilteredBooks)
+        booksDispatch(removeBookAC(id))
     }
 
     //вызов окна редактирования
     const editBook = (id: string, image: string, title: string, author: string, year: string) => {
-        let currentBook = books.find((e) => e.id === id)
+        let currentBook = books.find((b: BooksType) => b.id === id)
         if (currentBook) {
             currentBook.image = image
             currentBook.title = title
