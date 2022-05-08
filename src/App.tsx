@@ -109,7 +109,7 @@ function App() {
                 setYear={setYear}
                 setImage={setImage}
                 setModalActive={setModalActive}
-                callBack={()=>addBook}
+                callBack={() => {addBook(title, author, year, image)}}
             />
         </div>
     );

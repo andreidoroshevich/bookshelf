@@ -32,6 +32,7 @@ const Book = (props: BookType) => {
 
     const editBookHandler = () => {
         props.editBook(props.book.id, image, title, author, year)
+        setModalActive(false)
     }
 
     return (

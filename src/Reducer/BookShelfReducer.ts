@@ -24,7 +24,7 @@ export const BookShelfReducer = (state: BooksType[], action: ActionType) => {
             return state.filter(t => t.id !== action.payload.id)
         }
         case "GET-STATE": {
-            return JSON.parse(localStorage.getItem('books')  || '')
+            return JSON.parse(localStorage.getItem('books') || '')
         }
 
         default:
