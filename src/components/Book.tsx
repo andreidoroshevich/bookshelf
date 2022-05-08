@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Button from "./Button";
-import Modal from "./Modal/Modal";
 import {BooksType} from "../App";
+import Modal from "./Modal/Modal";
 
 type BookType = {
     book: BooksType
@@ -11,7 +11,12 @@ type BookType = {
 
 const Book = (props: BookType) => {
 
+    const [title, setTitle] = useState('')
+    const [author, setAuthor] = useState('')
+    const [image, setImage] = useState('')
+    const [year, setYear] = useState('')
     const [modalActive, setModalActive] = useState(false)
+
 
     const onClickRemoveBookHandler = (id: string) => {
         props.removeBook(id)
@@ -25,13 +30,13 @@ const Book = (props: BookType) => {
         setYear(props.book.year)
     }
 
-    let [title, setTitle] = useState('')
-    let [author, setAuthor] = useState('')
-    let [image, setImage] = useState('')
-    let [year, setYear] = useState('')
+    const editBookHandler = () => {
+        props.editBook(props.book.id, image, title, author, year)
+    }
 
     return (
         <>
+            <table>
             <tr>
                 <td className={'photo'}>
                     <img alt={'bookImage'} src={props.book.image}/>
@@ -50,34 +55,23 @@ const Book = (props: BookType) => {
                     }}/>
                 </td>
             </tr>
-            <Modal active={modalActive}>
-                <div className={'addBookHeader'}>Редактировать книгу</div>
-                <hr/>
-                <div>Наименование</div>
-                <input value={title} onChange={(e) => {
-                    setTitle(e.currentTarget.value)
-                }}/>
-                <div>Автор</div>
-                <input value={author} onChange={(e) => {
-                    setAuthor(e.currentTarget.value)
-                }}/>
-                <div>Год издания</div>
-                <input className={'year'} value={year} onChange={(e) => {
-                    setYear(e.currentTarget.value)
-                }}/>
-                <div>Изображение</div>
-                <input value={image} onChange={(e) => {
-                    setImage(e.currentTarget.value)
-                }}/>
-                <div className={'modal-button'}>
-                    <Button title={'Сохранить'} callBack={() => {
-                        props.editBook(props.book.id, image, title, author, year)
-                        setModalActive(false)
-                    }}/>
-                    <Button title={'Отменить'} callBack={() => setModalActive(false)
-                    }/>
-                </div>
-            </Modal>
+                </table>
+
+            <Modal
+                modalTitle={'Редактировать книгу'}
+                active={modalActive}
+                title={title}
+                author={author}
+                year={year}
+                image={image}
+                buttonTitle={'Сохрнить'}
+                setTitle={setTitle}
+                setAuthor={setAuthor}
+                setYear={setYear}
+                setImage={setImage}
+                setModalActive={setModalActive}
+                callBack={editBookHandler}
+            />
         </>
 
     );

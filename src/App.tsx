@@ -4,8 +4,8 @@ import {v1} from "uuid";
 import TableOfBooks from "./components/TableOfBooks";
 import Header from "./components/Header";
 import Button from "./components/Button";
-import Modal from "./components/Modal/Modal";
 import {addNewBookAC, BookShelfReducer, getStateAC, removeBookAC} from "./Reducer/BookShelfReducer";
+import Modal from "./components/Modal/Modal";
 
 export type BooksType = {
     id: string
@@ -96,33 +96,21 @@ function App() {
                 editBook={editBook}
             />
 
-            <Modal active={modalActive}>
-
-                <div className={'addBookHeader'}>Добавить книгу</div>
-                <hr/>
-                <div>Наименование</div>
-                <input value={title} onChange={(e) => {
-                    setTitle(e.currentTarget.value)
-                }}/>
-                <div>Автор</div>
-                <input value={author} onChange={(e) => {
-                    setAuthor(e.currentTarget.value)
-                }}/>
-                <div>Год издания</div>
-                <input className={'year'} value={year} onChange={(e) => {
-                    setYear(e.currentTarget.value)
-                }}/>
-                <div>Изображение</div>
-                <input value={image} onChange={(e) => {
-                    setImage(e.currentTarget.value)
-                }}/>
-                <div className={'modal-button'}>
-                    <Button title={'Сохранить'} callBack={() => {
-                        addBook(title, author, year, image)
-                    }}/>
-                    <Button title={'Отменить'} callBack={() => setModalActive(false)}/>
-                </div>
-            </Modal>
+            <Modal
+                modalTitle={'Добавить книгу'}
+                active={modalActive}
+                title={title}
+                author={author}
+                year={year}
+                image={image}
+                buttonTitle={'Сохрнить'}
+                setTitle={setTitle}
+                setAuthor={setAuthor}
+                setYear={setYear}
+                setImage={setImage}
+                setModalActive={setModalActive}
+                callBack={()=>addBook}
+            />
         </div>
     );
 }
