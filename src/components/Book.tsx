@@ -36,7 +36,6 @@ const Book = (props: BookType) => {
 
     return (
         <>
-            <table>
             <tr>
                 <td className={'photo'}>
                     <img alt={'bookImage'} src={props.book.image}/>
@@ -55,7 +54,6 @@ const Book = (props: BookType) => {
                     }}/>
                 </td>
             </tr>
-                </table>
 
             <Modal
                 modalTitle={'Редактировать книгу'}

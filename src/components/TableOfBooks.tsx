@@ -13,11 +13,11 @@ type TableOfBooksType = {
 const TableOfBooks = (props: TableOfBooksType) => {
 
     return (
-        <>
+        <table>
             {props.books.map(b =>
                 <Book book={b} key={b.id} removeBook={props.removeBook} editBook={props.editBook}/>
             )}
-        </>
+        </table>
     );
 };
 
