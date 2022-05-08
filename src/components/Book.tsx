@@ -62,7 +62,7 @@ const Book = (props: BookType) => {
                 author={author}
                 year={year}
                 image={image}
-                buttonTitle={'Сохрнить'}
+                buttonTitle={'Сохранить'}
                 setTitle={setTitle}
                 setAuthor={setAuthor}
                 setYear={setYear}
