@@ -11,6 +11,7 @@ type BookType = {
 
 const Book = (props: BookType) => {
 
+
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [image, setImage] = useState('')
