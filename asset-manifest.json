@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/bookshelf/static/css/main.33f04a56.css",
+    "main.js": "/bookshelf/static/js/main.36cc14c0.js",
+    "index.html": "/bookshelf/index.html",
+    "main.33f04a56.css.map": "/bookshelf/static/css/main.33f04a56.css.map",
+    "main.36cc14c0.js.map": "/bookshelf/static/js/main.36cc14c0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.33f04a56.css",
+    "static/js/main.36cc14c0.js"
+  ]
+}
