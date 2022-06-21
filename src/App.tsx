@@ -4,7 +4,7 @@ import {v1} from "uuid";
 import TableOfBooks from "./components/TableOfBooks";
 import Header from "./components/Header";
 import Button from "./components/Button";
-import {addNewBookAC, BookShelfReducer, getStateAC, removeBookAC} from "./Reducer/BookShelfReducer";
+import {addNewBookAC, BookShelfReducer, editBookAC, getStateAC, removeBookAC} from "./Reducer/BookShelfReducer";
 import Modal from "./components/Modal/Modal";
 
 export type BooksType = {
@@ -73,13 +73,7 @@ function App() {
 
     //вызов окна редактирования
     const editBook = (id: string, image: string, title: string, author: string, year: string) => {
-        let currentBook = books.find((b: BooksType) => b.id === id)
-        if (currentBook) {
-            currentBook.image = image
-            currentBook.title = title
-            currentBook.author = author
-            currentBook.year = year
-        }
+        booksDispatch(editBookAC(id,image,title, author, year))
     }
 
     return (
