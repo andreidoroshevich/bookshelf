@@ -49,13 +49,12 @@ function App() {
     const [image, setImage] = useState('')
     const [year, setYear] = useState('')
 
-
-    // useEffect(() => {
-    //     booksDispatch(getStateAC());
-    // }, []);
-    // useEffect(() => {
-    //     localStorage.setItem('books', JSON.stringify(books));
-    // }, [books]);
+    useEffect(() => {
+        booksDispatch(getStateAC());
+    }, []);
+    useEffect(() => {
+        localStorage.setItem('books', JSON.stringify(books));
+    }, [books]);
 
     //функция добавления книги
     const addBook = (title: string, author: string, year: string, image: string) => {
